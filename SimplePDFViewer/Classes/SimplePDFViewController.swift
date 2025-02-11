@@ -25,40 +25,49 @@ public class SimplePDFViewController: UIViewController {
     private var pdf: PDFDocument?
     
     // Configurable properties
-    public var tint: UIColor? {
+    @objc public var tint: UIColor? {
         didSet {
             pdfView.tint = tint
             topBar.tint = tint
             bottomBar.tint = tint
         }
     }
-    public var errorMessage: String? {
+    @objc public var errorMessage: String? {
         didSet {
             pdfView.errorMessage = errorMessage ?? ""
         }
     }
-    public var viewTitle: String? {
+    @objc public var viewTitle: String? {
         didSet {
             topBar.title = viewTitle ?? ""
             title = viewTitle
         }
     }
-    public var exportPDFName: String = "Document"
+  
+    @objc public var exportPDFName: String = "Document"
     public var dismissalDelegate: SimplePDFViewOnDismissDelegate?
     
     // MARK: Constructors
+    
+    @objc
     public init(urlString: String) {
         super.init(nibName:nil, bundle:nil)
         pdfView.load(urlString: urlString)
     }
+    
+    @objc
     public init (url: URL) {
         super.init(nibName: nil, bundle: nil)
         pdfView.load(url: url)
     }
+    
+    @objc
     public init (data: Data) {
         super.init(nibName: nil, bundle: nil)
         pdfView.load(data: data)
     }
+  
+    @objc
     public init (pdf: PDFDocument) {
         super.init(nibName: nil, bundle: nil)
         pdfView.load(pdf: pdf)
